@@ -1,23 +1,44 @@
 /*
-Copyright © 2026 NAME HERE <EMAIL ADDRESS>
+Copyright © 2026 JayyDnt(
+
+	var nameAuthor string = "jaydont"
+
+	if name == nil {
+		return "name reqiired"
+	}
+	fmt.Println(nameAuthor)
+
+)
 */
 package cmd
 
 import (
+	"context"
 	"hz/internal"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/spf13/cobra"
 )
 
-// reconCmd represents the recon command
 var reconCmd = &cobra.Command{
 	Use:   "recon",
 	Short: "Subdomain recon wraper with go",
 	Run: func(cmd *cobra.Command, args []string) {
-		internal.RunRecon()
+		internal.RunRecon(args[0])
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(reconCmd)
+}
+
+func Execute() {
+	ctx, camcel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGALRM)
+	defer camcel()
+
+	if err := rootCmd.ExecuteContext(ctx); err != nil {
+		os.Exit(1)
+	}
 }
