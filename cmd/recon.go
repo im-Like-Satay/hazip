@@ -1,14 +1,5 @@
 /*
-Copyright © 2026 JayyDnt(
-
-	var nameAuthor string = "jaydont"
-
-	if name == nil {
-		return "name reqiired"
-	}
-	fmt.Println(nameAuthor)
-
-)
+Copyright © 2026 JayyDnt
 */
 package cmd
 
