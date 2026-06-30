@@ -7,11 +7,6 @@ import (
 )
 
 func RunRecon(input string) {
-	if input == "" {
-		fmt.Println("Missing Input :(")
-		return
-	}
-
 	var outputFileSubdo string = fmt.Sprintf("recon_subdo_%s.txt", input)
 	var outputFilePorts string = fmt.Sprintf("recon_ports_%s.txt", input)
 	var outptFileCrawling string = fmt.Sprintf("recon_crawl_%s.txt", input)

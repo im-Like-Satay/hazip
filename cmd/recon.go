@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"context"
+	"fmt"
 	"hz/internal"
 	"os"
 	"os/signal"
@@ -17,6 +18,11 @@ var reconCmd = &cobra.Command{
 	Use:   "recon",
 	Short: "Subdomain recon wraper with go",
 	Run: func(cmd *cobra.Command, args []string) {
+		if err := args; err != nil {
+			fmt.Print("Missing input :(")
+			return
+		}
+
 		internal.RunRecon(args[0])
 	},
 }
